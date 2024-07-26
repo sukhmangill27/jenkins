@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: homepage
+  name: homepage
+  namespace: ci-cd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homepage
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: homepage
+    spec:
+      containers:
+      - image: imresham/testing:homepage-1
+        name: homepage
+        resources: {}
+        ports:
+        -  containerPort: 80
+    
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: homepage-svc
+  namespace: ci-cd
+spec:
+  type: NodePort
+  selector:
+    app: homepage
+  ports:
+    - protocol: TCP
+      port: 8888
+      targetPort: 80
