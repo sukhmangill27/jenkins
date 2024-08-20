@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage ('build docker image') {
       steps {
-        sh 'docker build -t frontend .'
+        sh 'pwd'
+        //sh 'docker build -t frontend .'
       }
     }
   }
