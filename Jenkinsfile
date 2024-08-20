@@ -1,11 +1,10 @@
-pipeline {
+pipeline{
   agent any
-  stages{
-      stage("first stage"){
-          steps {
-                echo "hello"
-            }
+  stages {
+    stage('build docker image'){
+      steps{
+        docker build -t my-app-main .
       }
-    {
-
+    }
+  }
 }
