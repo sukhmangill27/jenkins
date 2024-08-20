@@ -3,7 +3,7 @@ pipeline {
   stages {
         stage ('build docker image') {
             steps {
-            sh docker build -t my-app-main .
+            sh 'docker build -t my-app-main .'
             }
         }
  }
